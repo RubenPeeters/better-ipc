@@ -208,7 +208,7 @@ class Client:
         self.session = ClientSession()
 
         try:
-            connection = await self.session.ws_connect(self.url, autoping=False)
+            connection = await self.session.ws_connect(self.url, verify_ssl=False, autoping=False)
         except ClientConnectorError as e:
             self.logger.critical(f"Failed to start the IPC, connection to {self.url!r} has failed!", exc_info=e)
             raise RuntimeError(f"Failed to start the IPC, connection to {self.url!r} has failed!")
